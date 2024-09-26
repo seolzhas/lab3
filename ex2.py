@@ -1,16 +1,9 @@
-class Shape:
-    def area(self):
-        return 0
+def fahrenheit_to_celsius(fahrenheit):
+    celsius = (5 / 9) * (fahrenheit - 32)
+    return celsius
 
-class Square(Shape):
-    def __init__(self, length):
-        self.length = length
+fahrenheit = float(input("Enter the temperature in Fahrenheit: "))
 
-    def area(self):
-        return self.length * self.length
+celsius = fahrenheit_to_celsius(fahrenheit)
 
-square = Square(5)
-print("Area of the square:", square.area())
-
-shape = Shape()
-print("Area of the shape:", shape.area())
+print(f"{fahrenheit} degrees Fahrenheit is equal to {celsius:.2f} degrees Celsius.")

@@ -1,28 +1,21 @@
-import math
+def is_prime(n):
+    if n <= 1:
+        return False
+    if n == 2:
+        return True
+    if n % 2 == 0:
+        return False
+    for i in range(3, int(n ** 0.5) + 1, 2):
+        if n % i == 0:
+            return False
+    return True
 
-class Point:
-    def __init__(self, x, y):
-        self.x = x
-        self.y = y
+def filter_prime(numbers):
+    prime_numbers = [num for num in numbers if is_prime(num)]
+    return prime_numbers
 
-    def show(self):
-        print("Coordinates of the point: ({}, {})".format(self.x, self.y))
-
-    def move(self, new_x, new_y):
-        self.x = new_x
-        self.y = new_y
-
-    def dist(self, other_point):
-        distance = math.sqrt((self.x - other_point.x) ** 2 + (self.y - other_point.y) ** 2)
-        return distance
-
-point1 = Point(2, 3)
-point2 = Point(5, 7)
-
-point1.show()
-
-point2.move(10, 15)
-point2.show()
-
-distance = point1.dist(point2)
-print("Distance between the two points:", distance)
+if __name__ == "__main__":
+    numbers = input("Enter a list of numbers separated by spaces: ").split()
+    numbers = [int(num) for num in numbers]
+    prime_numbers = filter_prime(numbers)
+    print("Prime numbers in the list:", prime_numbers)

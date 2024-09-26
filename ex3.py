@@ -1,28 +1,23 @@
-class Shape:
-    def area(self):
-        return 0
+def solve(numheads, numlegs):
+    num_chickens = 0
+    num_rabbits = 0
 
-class Square(Shape):
-    def __init__(self, length):
-        self.length = length
+    for num_chickens in range(numheads + 1):
+        num_rabbits = numheads - num_chickens
 
-    def area(self):
-        return self.length * self.length
+        total_legs = 2 * num_chickens + 4 * num_rabbits
 
-class Rectangle(Shape):
-    def __init__(self, length, width):
-        self.length = length
-        self.width = width
+        if total_legs == numlegs:
+            return num_chickens, num_rabbits
 
-    def area(self):
-        return self.length * self.width
+    return None, None
 
-shape = Shape()
-print("Area of shape:", shape.area())
-
-square = Square(5)
-print("Area of square:", square.area())
-
-rectangle = Rectangle(4, 6)
-print("Area of rectangle:", rectangle.area())
-
+if __name__ == "__main__":
+    numheads = 35
+    numlegs = 94
+    chickens, rabbits = solve(numheads, numlegs)
+    if chickens is not None and rabbits is not None:
+        print(f"Number of chickens: {chickens}")
+        print(f"Number of rabbits: {rabbits}")
+    else:
+        print("No solution found.")

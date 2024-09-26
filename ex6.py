@@ -1,17 +1,10 @@
-def is_prime(n):
-    if n <= 1:
-        return False
-    if n == 2:
-        return True
-    if n % 2 == 0:
-        return False
-    for i in range(3, int(n**0.5) + 1, 2):
-        if n % i == 0:
-            return False
-    return True
+def reverse_sentence(sentence):
+    words = sentence.split()
+    reversed_sentence = ' '.join(words[::-1])
+    return reversed_sentence
 
-numbers = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97]
+user_input = input("Enter a sentence: ")
 
-prime_numbers = list(filter(lambda x: is_prime(x), numbers))
+reversed_sentence = reverse_sentence(user_input)
 
-print("Prime numbers:", prime_numbers)
+print("Reversed sentence:", reversed_sentence)
