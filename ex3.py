@@ -1,23 +1,27 @@
-def solve(numheads, numlegs):
-    num_chickens = 0
-    num_rabbits = 0
-
-    for num_chickens in range(numheads + 1):
-        num_rabbits = numheads - num_chickens
-
-        total_legs = 2 * num_chickens + 4 * num_rabbits
-
-        if total_legs == numlegs:
-            return num_chickens, num_rabbits
-
-    return None, None
+def get_movies_by_category(movie_list, category):
+    movies_in_category = [movie for movie in movie_list if movie["category"] == category]
+    return movies_in_category
 
 if __name__ == "__main__":
-    numheads = 35
-    numlegs = 94
-    chickens, rabbits = solve(numheads, numlegs)
-    if chickens is not None and rabbits is not None:
-        print(f"Number of chickens: {chickens}")
-        print(f"Number of rabbits: {rabbits}")
-    else:
-        print("No solution found.")
+    movies = [
+        {
+            "name": "Usual Suspects", 
+            "imdb": 7.0,
+            "category": "Thriller"
+        },
+        {
+            "name": "Hitman",
+            "imdb": 6.3,
+            "category": "Action"
+        },
+        {
+            "name": "Dark Knight",
+            "imdb": 9.0,
+            "category": "Adventure"
+        },
+    ]
+
+    action_movies = get_movies_by_category(movies, "Action")
+    print("Movies in the 'Action' category:")
+    for movie in action_movies:
+        print(f"Name: {movie['name']}, IMDB: {movie['imdb']}")

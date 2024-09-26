@@ -1,21 +1,29 @@
-def is_prime(n):
-    if n <= 1:
-        return False
-    if n == 2:
-        return True
-    if n % 2 == 0:
-        return False
-    for i in range(3, int(n ** 0.5) + 1, 2):
-        if n % i == 0:
-            return False
-    return True
-
-def filter_prime(numbers):
-    prime_numbers = [num for num in numbers if is_prime(num)]
-    return prime_numbers
+def compute_average_imdb_score(movie_list):
+    total_score = sum(movie["imdb"] for movie in movie_list)
+    num_movies = len(movie_list)
+    if num_movies == 0:
+        return 0  
+    average_score = total_score / num_movies
+    return average_score
 
 if __name__ == "__main__":
-    numbers = input("Enter a list of numbers separated by spaces: ").split()
-    numbers = [int(num) for num in numbers]
-    prime_numbers = filter_prime(numbers)
-    print("Prime numbers in the list:", prime_numbers)
+    movies = [
+        {
+            "name": "Usual Suspects", 
+            "imdb": 7.0,
+            "category": "Thriller"
+        },
+        {
+            "name": "Hitman",
+            "imdb": 6.3,
+            "category": "Action"
+        },
+        {
+            "name": "Dark Knight",
+            "imdb": 9.0,
+            "category": "Adventure"
+        },
+    ]
+
+    average_score = compute_average_imdb_score(movies)
+    print(f"Average IMDB score of the movies: {average_score}")

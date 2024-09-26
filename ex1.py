@@ -1,8 +1,10 @@
-def grams_to_ounces(grams):
-    ounces = 28.3495231 * grams
-    return ounces
+def is_above_5_5(movie):
+    return movie["imdb"] > 5.5
 
 if __name__ == "__main__":
-    grams = float(input("Enter the weight in grams: "))
-    ounces = grams_to_ounces(grams)
-    print(f"{grams} grams is equal to {ounces:.2f} ounces.")
+    movie = {
+        "name": "Usual Suspects",
+        "imdb": 7.0,
+        "category": "Thriller"
+    }
+    print(is_above_5_5(movie))  # Output: True

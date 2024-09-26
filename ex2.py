@@ -1,9 +1,27 @@
-def fahrenheit_to_celsius(fahrenheit):
-    celsius = (5 / 9) * (fahrenheit - 32)
-    return celsius
+def get_high_rated_movies(movie_list):
+    high_rated_movies = [movie for movie in movie_list if movie["imdb"] > 5.5]
+    return high_rated_movies
 
-fahrenheit = float(input("Enter the temperature in Fahrenheit: "))
+if __name__ == "__main__":
+    movies = [
+        {
+            "name": "Usual Suspects", 
+            "imdb": 7.0,
+            "category": "Thriller"
+        },
+        {
+            "name": "Hitman",
+            "imdb": 6.3,
+            "category": "Action"
+        },
+        {
+            "name": "Dark Knight",
+            "imdb": 9.0,
+            "category": "Adventure"
+        },
+    ]
 
-celsius = fahrenheit_to_celsius(fahrenheit)
-
-print(f"{fahrenheit} degrees Fahrenheit is equal to {celsius:.2f} degrees Celsius.")
+    high_rated_movies = get_high_rated_movies(movies)
+    print("Movies with an IMDB score above 5.5:")
+    for movie in high_rated_movies:
+        print(f"Name: {movie['name']}, IMDB: {movie['imdb']}")
